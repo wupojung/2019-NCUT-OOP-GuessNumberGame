@@ -8,6 +8,13 @@ namespace GuessNumberGame
 {
     class Program
     {
+
+        public static int GetInput()
+        {
+            string input_str = Console.ReadLine();  
+            return int.Parse(input_str);
+        }
+
         static void Main(string[] args)
         {
             int input = -1;
@@ -22,9 +29,8 @@ namespace GuessNumberGame
             //遊戲主迴圈
             while (true)  //game loop 
             {
-                //決定輸入內容
-                string input_str = Console.ReadLine();  //input  string 
-                input = int.Parse(input_str);
+                //決定輸入內容                
+                input = GetInput();
 
                 //離開條件 
                 if (input == guess)
