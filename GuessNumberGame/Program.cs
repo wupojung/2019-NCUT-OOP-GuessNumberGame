@@ -23,7 +23,7 @@ namespace GuessNumberGame
                 {
                     break;
                 }
-                Console.WriteLine("您輸入的數字不在範圍內");
+                Console.WriteLine("您輸入的數字不在範圍內，請重新輸入一個數字(0-100):");
             }
             return result;
         }
