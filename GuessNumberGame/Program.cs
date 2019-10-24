@@ -12,27 +12,35 @@ namespace GuessNumberGame
         public static int GetInput(int min, int max)
         {
             int result = -1;
-
-            while (true)
+            try
             {
-                string input_str = Console.ReadLine();
-
-                if(int.TryParse(input_str,out result))
+                while (true)
                 {
-                    result = int.Parse(input_str);
+                    string input_str = Console.ReadLine();
 
-                    //離開的條件
-                    if (result >= min && result <= max)
+                    if (int.TryParse(input_str, out result))
                     {
-                        break;
+                        result = int.Parse(input_str);
+
+                        //離開的條件
+                        if (result >= min && result <= max)
+                        {
+                            break;
+                        }
+                        Console.WriteLine("您輸入的數字不在範圍內，請重新輸入一個數字(0-100):");
                     }
-                    Console.WriteLine("您輸入的數字不在範圍內，請重新輸入一個數字(0-100):");
-                }
-                else
-                {
-                    //輸入的不是數字
-                    Console.WriteLine("您輸入的不是數字，請重新輸入一個數字(0-100):");
-                }
+                    else
+                    {
+                        //輸入的不是數字
+                        Console.WriteLine("您輸入的不是數字，請重新輸入一個數字(0-100):");
+                    }
+                }               
+            }
+            catch (Exception exp)
+            {
+                //爆炸了....
+                Console.WriteLine(exp.ToString());
+                throw;
             }
             return result;
         }
