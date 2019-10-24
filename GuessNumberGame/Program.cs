@@ -16,14 +16,23 @@ namespace GuessNumberGame
             while (true)
             {
                 string input_str = Console.ReadLine();
-                result = int.Parse(input_str);
 
-                //離開的條件
-                if (result >= min && result <= max)
+                if(int.TryParse(input_str,out result))
                 {
-                    break;
+                    result = int.Parse(input_str);
+
+                    //離開的條件
+                    if (result >= min && result <= max)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("您輸入的數字不在範圍內，請重新輸入一個數字(0-100):");
                 }
-                Console.WriteLine("您輸入的數字不在範圍內，請重新輸入一個數字(0-100):");
+                else
+                {
+                    //輸入的不是數字
+                    Console.WriteLine("您輸入的不是數字，請重新輸入一個數字(0-100):");
+                }
             }
             return result;
         }
