@@ -9,10 +9,23 @@ namespace GuessNumberGame
     class Program
     {
 
-        public static int GetInput()
+        public static int GetInput(int min, int max)
         {
-            string input_str = Console.ReadLine();  
-            return int.Parse(input_str);
+            int result = -1;
+
+            while (true)
+            {
+                string input_str = Console.ReadLine();
+                result = int.Parse(input_str);
+
+                //離開的條件
+                if (result >= min && result <= max)
+                {
+                    break;
+                }
+                Console.WriteLine("您輸入的數字不在範圍內");
+            }
+            return result;
         }
 
         static void Main(string[] args)
@@ -30,7 +43,7 @@ namespace GuessNumberGame
             while (true)  //game loop 
             {
                 //決定輸入內容                
-                input = GetInput();
+                input = GetInput(0, 100);
 
                 //離開條件 
                 if (input == guess)
